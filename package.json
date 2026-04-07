@@ -1,0 +1,17 @@
+{
+  "name": "windows-reviews",
+  "version": "1.0.0",
+  "description": "Extract positive Windows mentions from Twitter",
+  "main": "get-windows-reviews.js",
+  "scripts": {
+    "windows-reviews": "node get-windows-reviews.js",
+    "windows-reviews:api": "node get-windows-reviews.js --api"
+  },
+  "dependencies": {
+    "pdfkit": "^0.18.0",
+    "node-cron": "^3.0.2",
+    "axios": "^1.6.0",
+    "@azure/msal-node": "^2.6.0",
+    "moment-timezone": "^0.5.43"
+  }
+}

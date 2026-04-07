@@ -1,0 +1,27 @@
+{
+  "powerbi": {
+    "dashboardUrl": "https://app.powerbi.com/groups/.../dashboards/...",
+    "reportId": "your-report-id-here",
+    "workspaceId": "your-workspace-id-here",
+    "clientId": "your-azure-ad-app-client-id",
+    "tenantId": "your-tenant-id",
+    "scope": "https://analysis.windows.net/powerbi/api/.default"
+  },
+  "teams": {
+    "webhookUrl": "https://outlook.office.com/webhook/...",
+    "channel": "Daily Insights"
+  },
+  "schedule": {
+    "cron": "0 9 * * *",
+    "timezone": "America/New_York"
+  },
+  "insights": {
+    "metricsToMonitor": ["revenue", "users", "conversion"],
+    "anomalyThreshold": 0.2,
+    "trendDays": 7
+  },
+  "reporting": {
+    "generatePdf": true,
+    "pdfPath": "./reports/powerbi-daily-report.pdf"
+  }
+}
