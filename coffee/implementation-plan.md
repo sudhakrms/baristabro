@@ -85,7 +85,7 @@ Implement across 5 phases with 14 steps, matching the design doc. Phases 1–2 a
 
 ## Phase 5: Final Integration
 
-### TODO: typography-styles
+### TODO: typography-styles  
 **Title:** Typography & global styles finalization  
 **Description:** Verify Playfair Display (headings) + Inter (body) rendering. Responsive `clamp()` font sizes. Optional subtle coffee-paper texture overlay at 3% opacity on backgrounds. Final global style polish.  
 **Depends on:** scroll-animations, responsive-a11y
