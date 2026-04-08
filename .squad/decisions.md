@@ -49,6 +49,21 @@ export function TasteRadar({ scores, size }: {
 
 Max score hardcoded at 10 (matching bean data range); add `maxScore` prop if alternate scales needed.
 
+### Indian Coffee Data Accuracy: KC Das → Mysore Nuggets Extra Bold (Hank)
+
+**Date:** 2026-04-08  
+**Status:** Implemented  
+**Priority:** High (credibility)
+
+During `src/data/indianCoffee.ts` development, the task listed "KC Das Coffee" as a heritage Mysore brand. However, KC Das is actually famous for sweets (canned rasgulla), not coffee. Replaced with **Mysore Nuggets Extra Bold (MNEB)** — India's actual premium export-grade Arabica classification from the Mysore region, recognized by the Coffee Board of India and international specialty importers.
+
+**Rationale:** Educational content must be factually accurate. Baristas and enthusiasts would immediately lose trust seeing "KC Das Coffee" as a heritage coffee brand. MNEB is the real heritage name associated with Mysore and maintains accuracy while meeting the task requirement for a prominent Indian coffee entry.
+
+**Impact:**
+- `src/data/indianCoffee.ts` updated with MNEB entry
+- Flavor profiles and radar scores differentiated to reflect genuine export-grade characteristics
+- No UI changes required — component already integrated
+
 ## Governance
 
 - All meaningful changes require team consensus

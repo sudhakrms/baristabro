@@ -29,3 +29,38 @@
   - `src/sections/DrinksGuide.tsx` — tab-filtered drinks grid with expandable cards + CupDiagram + composition bar
 - **Responsive:** Sunburst measures container width, caps at 520px. Drinks grid: 1/2/3 cols via Tailwind breakpoints.
 - **Accessibility:** All interactive SVG elements have `role="button"`, `tabindex`, `aria-label`. Tabs use `role="tablist"`/`role="tab"`. Color swatches supplement labels — never color-only.
+- **Section architecture (IndianCoffee):** Tab-filtered grid + expandable cards pattern mirrors DrinksGuide. Key additions: colored left-border per brand, dual TasteRadar sizes (180px collapsed, 260px expanded), TypeBadge pill component. AnimatePresence with `popLayout` mode for smooth tab switches. Framer Motion `ease` must be typed (use default, not string literal) to satisfy `motion-dom` strict types.
+- **TasteRadar reuse:** Confirmed zero-friction reuse — import `TasteRadar` directly and pass `scores` + `size`. No wrapper needed. Works at any size; 180px is minimum for readable labels. Component already has `aria-label` with all five scores.
+- **Key files (updated):**
+  - `src/sections/IndianCoffee.tsx` — Indian Coffee Heritage section with tab filters, expandable cards, TasteRadar per card
+  - `src/data/indianCoffee.ts` — `IndianCoffeeBrand` interface + 9 brands/estates data (Hank may replace data, interface is canonical)
+
+## Latest Work (2026-04-08)
+
+**Task:** Create IndianCoffee.tsx section + integrate with app + Navbar wiring  
+**Status:** ✅ Delivered
+
+- Created `src/sections/IndianCoffee.tsx`
+  - Tab-filtered grid: All/Estates/Brands/Espresso tabs
+  - Expandable card design with smooth animations
+  - Per-card colored accent dot (left border) for visual scanning
+  - Type badge + region metadata
+  - TasteRadar: 180px collapsed, 260px expanded (reuses `src/components/TasteRadar.tsx`)
+  - Flavor tags (truncated/full per state)
+  - Notable products + processing/established year badges
+
+- **Integration:**
+  - Wired into `App.tsx` after BrewingMethods section
+  - Added "Indian Coffee" navigation item to Navbar
+  - Consistent spacing + scroll-triggered animations via SectionWrapper
+
+- **Technical Details:**
+  - Framer Motion AnimatePresence with `popLayout` mode for tab transitions
+  - TasteRadar reused from shared component (zero-friction, pass scores + size)
+  - Type-safe Framer Motion `ease` (default, not string literal)
+  - Responsive grid: 1/2/3 cols via Tailwind breakpoints
+  - Follows DrinksGuide + BeanExplorer card patterns for consistency
+
+**Build:** Part of combined 157.90 KB JS + 5.82 KB CSS gzipped, 2711 modules, zero errors.
+
+**Parallel delivery:** Coordinated with Jesse (SVG beans) and Hank (indianCoffee.ts data).
