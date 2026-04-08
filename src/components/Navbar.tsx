@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { label: 'Flavor Wheel', href: '#flavor-wheel' },
   { label: 'Drinks Guide', href: '#drinks-guide' },
   { label: 'Brewing Methods', href: '#brewing-methods' },
+  { label: 'Indian Coffee', href: '#indian-coffee' },
 ] as const;
 
 function scrollToSection(e: React.MouseEvent<HTMLAnchorElement>, href: string) {

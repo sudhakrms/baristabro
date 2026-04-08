@@ -3,6 +3,18 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, GitCompareArrows } from 'lucide-react';
 import { beans, type Bean } from '../data/beans';
 
+import arabicaSvg from '../assets/beans/arabica.svg';
+import robustaSvg from '../assets/beans/robusta.svg';
+import libericaSvg from '../assets/beans/liberica.svg';
+import excelsaSvg from '../assets/beans/excelsa.svg';
+
+const beanImages: Record<string, string> = {
+  Arabica: arabicaSvg,
+  Robusta: robustaSvg,
+  Liberica: libericaSvg,
+  Excelsa: excelsaSvg,
+};
+
 const tasteAxes = ['acidity', 'body', 'sweetness', 'bitterness', 'aftertaste'] as const;
 
 function TasteBar({ label, value, max = 10 }: { label: string; value: number; max?: number }) {
@@ -84,7 +96,21 @@ function BeanCard({
       whileHover={{ scale: compareMode ? 1 : 1.015 }}
       transition={{ duration: 0.3 }}
     >
-      <div className="p-5 md:p-6">
+      {/* Hero bean image */}
+      <div className="flex items-center justify-center pt-5 pb-2 md:pt-6 md:pb-3">
+        <motion.img
+          src={beanImages[bean.name]}
+          alt={`${bean.name} coffee bean illustration`}
+          className="drop-shadow-lg"
+          style={{ width: 140, height: 140, objectFit: 'contain' }}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          whileHover={{ scale: 1.08, rotate: 6 }}
+        />
+      </div>
+
+      <div className="px-5 pb-5 md:px-6 md:pb-6">
         <div className="flex items-start justify-between mb-3">
           <div>
             <h3
@@ -187,6 +213,18 @@ function BeanCard({
               className="px-5 pb-5 md:px-6 md:pb-6 pt-2 border-t"
               style={{ borderColor: 'var(--border)' }}
             >
+              {/* Larger bean image in expanded view */}
+              <div className="flex justify-center mb-4">
+                <motion.img
+                  src={beanImages[bean.name]}
+                  alt={`${bean.name} coffee bean — detailed view`}
+                  style={{ width: 220, height: 220, objectFit: 'contain' }}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4, ease: 'easeOut' }}
+                />
+              </div>
+
               <p className="text-sm leading-relaxed mb-4" style={{ color: 'var(--text-secondary)' }}>
                 {bean.description}
               </p>
@@ -310,6 +348,37 @@ function ComparisonPanel({
         >
           <X size={20} />
         </button>
+      </div>
+
+      {/* Side-by-side bean images */}
+      <div className="flex items-center justify-center gap-8 mb-6">
+        <div className="text-center">
+          <motion.img
+            src={beanImages[beanA.name]}
+            alt={`${beanA.name} bean`}
+            style={{ width: 120, height: 120, objectFit: 'contain' }}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+          />
+          <span className="text-xs font-semibold mt-1 block" style={{ color: 'var(--accent)' }}>
+            {beanA.name}
+          </span>
+        </div>
+        <span className="text-lg font-bold" style={{ color: 'var(--text-secondary)' }}>vs</span>
+        <div className="text-center">
+          <motion.img
+            src={beanImages[beanB.name]}
+            alt={`${beanB.name} bean`}
+            style={{ width: 120, height: 120, objectFit: 'contain' }}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4, ease: 'easeOut', delay: 0.1 }}
+          />
+          <span className="text-xs font-semibold mt-1 block" style={{ color: 'var(--accent)' }}>
+            {beanB.name}
+          </span>
+        </div>
       </div>
 
       {/* Side-by-side stats */}

@@ -7,6 +7,7 @@ import { DrinksGuide } from './sections/DrinksGuide';
 import { BeanExplorer } from './sections/BeanExplorer';
 import { Terminology } from './sections/Terminology';
 import { BrewingMethods } from './sections/BrewingMethods';
+import { IndianCoffee } from './sections/IndianCoffee';
 
 function App() {
   return (
@@ -28,6 +29,10 @@ function App() {
 
       <SectionWrapper id="brewing-methods" alternate>
         <BrewingMethods />
+      </SectionWrapper>
+
+      <SectionWrapper id="indian-coffee" alternate>
+        <IndianCoffee />
       </SectionWrapper>
 
       <Footer />
