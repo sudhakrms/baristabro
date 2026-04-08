@@ -1,0 +1,23 @@
+{
+  "universe_usage_history": [
+    {
+      "universe": "Breaking Bad",
+      "assignment_id": "brewschool-init-001",
+      "used_at": "2026-04-08T05:16:08Z"
+    }
+  ],
+  "assignment_cast_snapshots": {
+    "brewschool-init-001": {
+      "universe": "Breaking Bad",
+      "agents": {
+        "lead": "Gus",
+        "frontend-dev": "Jesse",
+        "viz-dev": "Walter",
+        "ux-designer": "Lydia",
+        "tester": "Mike",
+        "barista-consultant": "Hank"
+      },
+      "created_at": "2026-04-08T05:16:08Z"
+    }
+  }
+}
