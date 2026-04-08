@@ -27,3 +27,4 @@
 - **Folder structure**: `src/{components,sections,data,hooks,assets,styles}` — clean separation
 - **Key files**: `vite.config.ts` (Tailwind plugin), `src/styles/theme.css` (tokens), `src/hooks/useTheme.ts`, `src/hooks/useInView.ts`, `src/components/Navbar.tsx`, `src/components/ThemeToggle.tsx`, `src/components/SectionWrapper.tsx`, `src/sections/Hero.tsx`, `src/App.tsx`
 - **Google Fonts**: Playfair Display (headings) + Inter (body) loaded via index.html preconnect
+- **Netlify deployment**: Base path `/coffee/` handled via `netlify.toml` + `public/_redirects`. SPA fallback redirects all `/coffee/*` routes to `/coffee/index.html` with 200 status. Asset caching (1 year immutable), HTML no-cache with security headers (X-Frame-Options, X-XSS-Protection, CSP-ready). Build command `npm run build` outputs to `dist/`
