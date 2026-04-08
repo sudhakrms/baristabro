@@ -1,0 +1,13 @@
+feat: Add all 5 interactive sections (Bean Explorer, Terminology, Flavor Wheel, Drinks Guide, Brewing Methods)
+
+- BeanExplorer: Expandable cards with comparison mode and taste profile bars
+- Terminology: Searchable flip-card glossary with category filters
+- BrewingMethods: Card grid with step-by-step walkthroughs and progress indicators
+- FlavorWheel: D3 sunburst of SCA flavor wheel with click-to-explore detail panel
+- DrinksGuide: Tab-filtered grid with expandable cards and CupDiagram integration
+- CupDiagram: Animated SVG cup with bottom-up layer fills
+- TasteRadar: Reusable 5-axis SVG radar chart component
+
+Build: 148KB gzipped, zero errors
+
+Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>

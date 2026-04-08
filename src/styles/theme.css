@@ -1,0 +1,62 @@
+/* BrewSchool Theme — CSS Custom Properties */
+
+:root {
+  --bg-primary: #FEFCF9;
+  --bg-secondary: #F5E6D3;
+  --accent: #8B4513;
+  --text-primary: #2B1810;
+  --text-secondary: #5D4633;
+  --border: #D9CDD3;
+
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #1A1410;
+  --bg-secondary: #2B1F18;
+  --accent: #D4A574;
+  --text-primary: #F5E6D3;
+  --text-secondary: #C9B5A1;
+  --border: #4A3F38;
+}
+
+*,
+*::before,
+*::after {
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/* Opt out of transition for elements where it causes issues */
+*:focus,
+input,
+textarea,
+select,
+svg,
+svg * {
+  transition: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

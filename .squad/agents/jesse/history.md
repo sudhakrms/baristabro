@@ -17,3 +17,11 @@
 - No router — smooth scroll section anchoring
 
 ## Learnings
+
+- **BeanExplorer** (`src/sections/BeanExplorer.tsx`): 4-bean card grid (2-col desktop, 1-col mobile) with AnimatePresence expand/collapse, stagger-on-scroll, comparison mode (select 2 → side-by-side panel), taste profile as animated bars per axis
+- **Terminology** (`src/sections/Terminology.tsx`): Searchable + category-filtered glossary, flip-card animation (rotateY via Framer Motion with preserve-3d/backfaceVisibility), 3-col → 2 → 1 responsive grid, AnimatePresence popLayout for filter transitions, term count display
+- **BrewingMethods** (`src/sections/BrewingMethods.tsx`): 10 method cards (3-col desktop), click expands into full walkthrough with step-by-step progression (prev/next + clickable progress dots), equipment list, Lucide icons for specs, AnimatePresence mode="wait" for grid↔expanded swap
+- **ringColor is NOT a valid CSS property** — use Tailwind arbitrary `ring-[var(--accent)]` class instead of inline style
+- All sections use CSS custom properties exclusively for colors (--bg-primary, --bg-secondary, --accent, --text-primary, --text-secondary, --border)
+- All sections provide their own `<h2>` heading — SectionWrapper just handles padding + fade-in
+- App.tsx preserves FlavorWheel and DrinksGuide sections added by other agents
