@@ -59,6 +59,8 @@ export function DrinksGuide() {
       <motion.div
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
         layout
+        role="tabpanel"
+        aria-label={`${activeTab} drinks`}
       >
         <AnimatePresence mode="popLayout">
           {filtered.map((drink, index) => (

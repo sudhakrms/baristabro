@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useId } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface Layer {
@@ -14,6 +14,7 @@ interface CupDiagramProps {
 
 export function CupDiagram({ layers, height = 200 }: CupDiagramProps) {
   const [activeLayer, setActiveLayer] = useState<number | null>(null);
+  const clipId = useId();
 
   const cupWidth = 120;
   const cupTopY = 10;
@@ -72,7 +73,7 @@ export function CupDiagram({ layers, height = 200 }: CupDiagramProps) {
         aria-label="Coffee cup layer diagram"
       >
         <defs>
-          <clipPath id="cup-clip">
+          <clipPath id={clipId}>
             <path d={clipPath} />
           </clipPath>
         </defs>
@@ -91,7 +92,7 @@ export function CupDiagram({ layers, height = 200 }: CupDiagramProps) {
         />
 
         {/* Animated layers */}
-        <g clipPath="url(#cup-clip)">
+        <g clipPath={`url(#${clipId})`}>
           {layerRects.map((lr, i) => (
             <motion.rect
               key={`${lr.name}-${i}`}

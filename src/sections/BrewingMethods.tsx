@@ -29,11 +29,20 @@ function MethodCard({
     <motion.div
       layout
       className="rounded-2xl border cursor-pointer overflow-hidden"
+      role="button"
+      tabIndex={0}
+      aria-label={`${method.name} — ${method.difficulty} difficulty`}
       style={{
         backgroundColor: 'var(--bg-secondary)',
         borderColor: 'var(--border)',
       }}
       onClick={onExpand}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onExpand();
+        }
+      }}
       whileHover={{ scale: 1.02 }}
       transition={{ duration: 0.3 }}
     >

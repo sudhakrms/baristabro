@@ -25,6 +25,7 @@ export function Navbar() {
 
   return (
     <nav
+      aria-label="Main navigation"
       className="sticky top-0 z-50 backdrop-blur-md border-b"
       style={{
         backgroundColor: 'color-mix(in srgb, var(--bg-primary) 85%, transparent)',

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, GitCompareArrows } from 'lucide-react';
 import { beans, type Bean } from '../data/beans';
@@ -62,11 +62,21 @@ function BeanCard({
         backgroundColor: 'var(--bg-secondary)',
         borderColor: isCompared ? 'var(--accent)' : 'var(--border)',
       }}
+      role="button"
+      tabIndex={0}
+      aria-label={`${bean.name} bean${compareMode ? (isCompared ? ' — selected for comparison' : ' — click to compare') : ''}`}
       onClick={() => {
         if (compareMode) {
           onCompareToggle();
         } else {
           onToggle();
+        }
+      }}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          if (compareMode) onCompareToggle();
+          else onToggle();
         }
       }}
       whileHover={{ scale: compareMode ? 1 : 1.02 }}
@@ -310,21 +320,20 @@ function ComparisonPanel({
           { label: 'Altitude', a: beanA.altitude.split('(')[0].trim(), b: beanB.altitude.split('(')[0].trim() },
           { label: 'Size', a: beanA.size, b: beanB.size },
         ].map((row) => (
-          <>
-            <div key={`a-${row.label}`} className="text-sm text-right" style={{ color: 'var(--text-primary)' }}>
+          <React.Fragment key={row.label}>
+            <div className="text-sm text-right" style={{ color: 'var(--text-primary)' }}>
               {row.a}
             </div>
             <div
-              key={`l-${row.label}`}
               className="text-xs text-center font-medium self-center whitespace-nowrap"
               style={{ color: 'var(--text-secondary)' }}
             >
               {row.label}
             </div>
-            <div key={`b-${row.label}`} className="text-sm" style={{ color: 'var(--text-primary)' }}>
+            <div className="text-sm" style={{ color: 'var(--text-primary)' }}>
               {row.b}
             </div>
-          </>
+          </React.Fragment>
         ))}
       </div>
 
