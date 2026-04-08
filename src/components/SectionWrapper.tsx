@@ -6,17 +6,23 @@ interface SectionWrapperProps {
   id: string;
   children: ReactNode;
   className?: string;
+  /** Use alternate background for visual rhythm between sections */
+  alternate?: boolean;
 }
 
-export function SectionWrapper({ id, children, className = '' }: SectionWrapperProps) {
+export function SectionWrapper({ id, children, className = '', alternate = false }: SectionWrapperProps) {
   const { ref, isInView } = useInView({ threshold: 0.1 });
 
   return (
     <section
       id={id}
       ref={ref}
-      className={`px-4 py-16 md:px-8 lg:px-16 xl:px-24 ${className}`}
-      style={{ backgroundColor: 'var(--bg-primary)' }}
+      className={`px-4 md:px-8 lg:px-16 xl:px-24 ${className}`}
+      style={{
+        backgroundColor: alternate ? 'var(--bg-tertiary)' : 'var(--bg-primary)',
+        paddingTop: 'var(--section-padding-y)',
+        paddingBottom: 'var(--section-padding-y)',
+      }}
     >
       <motion.div
         initial={{ opacity: 0, y: 30 }}

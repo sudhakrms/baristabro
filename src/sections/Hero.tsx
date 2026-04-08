@@ -5,7 +5,7 @@ function CoffeeSteam() {
   return (
     <svg
       viewBox="0 0 100 120"
-      className="w-24 h-32 md:w-32 md:h-40 mx-auto mb-4"
+      className="w-24 h-32 md:w-32 md:h-40 mx-auto mb-6"
       aria-hidden="true"
     >
       {/* Coffee cup */}
@@ -56,7 +56,7 @@ function CoffeeSteam() {
 export function Hero() {
   return (
     <section
-      className="relative min-h-screen flex flex-col items-center justify-center px-4 text-center overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center px-6 text-center overflow-hidden"
       style={{
         background: `linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%)`,
       }}
@@ -65,22 +65,31 @@ export function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
+        className="max-w-3xl mx-auto"
       >
         <CoffeeSteam />
 
         <h1
-          className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
+          className="font-bold mb-6"
           style={{
             fontFamily: 'var(--font-heading)',
             color: 'var(--text-primary)',
+            fontSize: 'var(--text-hero)',
+            letterSpacing: 'var(--heading-letter-spacing)',
+            lineHeight: 1.1,
+            textShadow: 'var(--heading-glow)',
           }}
         >
           The Art &amp; Science of Coffee
         </h1>
 
         <p
-          className="text-lg md:text-xl max-w-2xl mx-auto mb-12"
-          style={{ color: 'var(--text-secondary)' }}
+          className="max-w-2xl mx-auto mb-14"
+          style={{
+            color: 'var(--text-secondary)',
+            fontSize: 'clamp(1rem, 1.5vw + 0.5rem, 1.25rem)',
+            lineHeight: 1.7,
+          }}
         >
           Explore the world of coffee — from bean to cup. Discover origins,
           master brewing techniques, and develop your palate.
@@ -94,13 +103,16 @@ export function Hero() {
           e.preventDefault();
           document.getElementById('bean-explorer')?.scrollIntoView({ behavior: 'smooth' });
         }}
-        className="absolute bottom-8"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute bottom-10 w-11 h-11 flex items-center justify-center rounded-full"
+        animate={{ y: [0, 8, 0] }}
+        transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
         aria-label="Scroll to content"
-        style={{ color: 'var(--accent)' }}
+        style={{
+          color: 'var(--accent)',
+          backgroundColor: 'color-mix(in srgb, var(--accent) 10%, transparent)',
+        }}
       >
-        <ChevronDown size={32} />
+        <ChevronDown size={24} />
       </motion.a>
     </section>
   );

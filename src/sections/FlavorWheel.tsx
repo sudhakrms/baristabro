@@ -133,12 +133,18 @@ export function FlavorWheel() {
   return (
     <SectionWrapper id="flavor-wheel">
       <h2
-        className="text-3xl md:text-4xl font-bold mb-2"
-        style={{ fontFamily: 'var(--font-heading)', color: 'var(--text-primary)' }}
+        className="font-bold mb-2"
+        style={{
+          fontFamily: 'var(--font-heading)',
+          color: 'var(--text-primary)',
+          fontSize: 'var(--text-section)',
+          letterSpacing: 'var(--heading-letter-spacing)',
+          textShadow: 'var(--heading-glow)',
+        }}
       >
         Flavor Wheel
       </h2>
-      <p className="mb-8 max-w-2xl" style={{ color: 'var(--text-secondary)' }}>
+      <p className="mb-10 max-w-2xl" style={{ color: 'var(--text-secondary)', fontSize: 'var(--text-small)' }}>
         The SCA Coffee Taster&apos;s Flavor Wheel — tap any segment to explore flavor categories and
         subcategories.
       </p>
@@ -161,7 +167,12 @@ export function FlavorWheel() {
           {selected ? (
             <div
               className="p-5 rounded-xl"
-              style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border)' }}
+              style={{
+                backgroundColor: 'var(--bg-secondary)',
+                border: 'var(--card-border)',
+                borderRadius: 'var(--card-radius)',
+                boxShadow: 'var(--card-shadow)',
+              }}
             >
               <div className="flex items-center gap-3 mb-3">
                 <div
@@ -211,7 +222,12 @@ export function FlavorWheel() {
           ) : (
             <div
               className="p-5 rounded-xl text-center"
-              style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border)' }}
+              style={{
+                backgroundColor: 'var(--bg-secondary)',
+                border: 'var(--card-border)',
+                borderRadius: 'var(--card-radius)',
+                boxShadow: 'var(--card-shadow)',
+              }}
             >
               <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
                 Tap a segment on the wheel to explore its flavor profile.

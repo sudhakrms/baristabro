@@ -1,0 +1,8 @@
+feat: Design polish, accessibility fixes, and build verification
+
+- Design token system with clamp() typography and unified card tokens
+- 9 accessibility fixes (ARIA roles, keyboard nav, clipPath IDs)
+- Footer, dark mode heading glow, alternating section backgrounds
+- Build verified: 149KB JS + 5.7KB CSS gzipped, zero errors
+
+Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>

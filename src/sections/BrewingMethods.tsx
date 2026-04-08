@@ -28,13 +28,15 @@ function MethodCard({
   return (
     <motion.div
       layout
-      className="rounded-2xl border cursor-pointer overflow-hidden"
+      className="cursor-pointer overflow-hidden"
       role="button"
       tabIndex={0}
       aria-label={`${method.name} — ${method.difficulty} difficulty`}
       style={{
         backgroundColor: 'var(--bg-secondary)',
-        borderColor: 'var(--border)',
+        borderRadius: 'var(--card-radius)',
+        border: 'var(--card-border)',
+        boxShadow: 'var(--card-shadow)',
       }}
       onClick={onExpand}
       onKeyDown={(e) => {
@@ -50,8 +52,13 @@ function MethodCard({
         {/* Header */}
         <div className="flex items-start justify-between mb-4">
           <h3
-            className="text-xl font-bold"
-            style={{ fontFamily: 'var(--font-heading)', color: 'var(--text-primary)' }}
+            className="font-bold"
+            style={{
+              fontFamily: 'var(--font-heading)',
+              color: 'var(--text-primary)',
+              fontSize: 'var(--text-card-title)',
+              letterSpacing: 'var(--heading-letter-spacing)',
+            }}
           >
             {method.name}
           </h3>
@@ -116,10 +123,12 @@ function ExpandedMethod({
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.3 }}
-      className="rounded-2xl border overflow-hidden"
+      className="overflow-hidden"
       style={{
         backgroundColor: 'var(--bg-secondary)',
-        borderColor: 'var(--accent)',
+        borderRadius: 'var(--card-radius)',
+        border: '1px solid var(--accent)',
+        boxShadow: 'var(--card-shadow-hover)',
       }}
     >
       <div className="p-5 md:p-8">
@@ -128,8 +137,13 @@ function ExpandedMethod({
           <div>
             <div className="flex items-center gap-3 mb-1">
               <h3
-                className="text-2xl md:text-3xl font-bold"
-                style={{ fontFamily: 'var(--font-heading)', color: 'var(--text-primary)' }}
+                className="font-bold"
+                style={{
+                  fontFamily: 'var(--font-heading)',
+                  color: 'var(--text-primary)',
+                  fontSize: 'var(--text-section)',
+                  letterSpacing: 'var(--heading-letter-spacing)',
+                }}
               >
                 {method.name}
               </h3>
@@ -316,12 +330,18 @@ export function BrewingMethods() {
     <div>
       {/* Header */}
       <h2
-        className="text-3xl md:text-4xl font-bold mb-2"
-        style={{ fontFamily: 'var(--font-heading)', color: 'var(--text-primary)' }}
+        className="font-bold mb-2"
+        style={{
+          fontFamily: 'var(--font-heading)',
+          color: 'var(--text-primary)',
+          fontSize: 'var(--text-section)',
+          letterSpacing: 'var(--heading-letter-spacing)',
+          textShadow: 'var(--heading-glow)',
+        }}
       >
         Brewing Methods
       </h2>
-      <p className="text-sm mb-8" style={{ color: 'var(--text-secondary)' }}>
+      <p className="mb-10" style={{ color: 'var(--text-secondary)', fontSize: 'var(--text-small)' }}>
         Master {brewingMethods.length} ways to brew — from beginner-friendly to advanced
       </p>
 

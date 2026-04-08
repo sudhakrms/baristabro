@@ -55,12 +55,14 @@ function BeanCard({
   return (
     <motion.div
       layout
-      className={`rounded-2xl border cursor-pointer overflow-hidden ${
+      className={`cursor-pointer overflow-hidden ${
         isCompared ? 'ring-2 ring-[var(--accent)]' : ''
       }`}
       style={{
         backgroundColor: 'var(--bg-secondary)',
-        borderColor: isCompared ? 'var(--accent)' : 'var(--border)',
+        borderRadius: 'var(--card-radius)',
+        border: isCompared ? '1px solid var(--accent)' : 'var(--card-border)',
+        boxShadow: 'var(--card-shadow)',
       }}
       role="button"
       tabIndex={0}
@@ -79,15 +81,20 @@ function BeanCard({
           else onToggle();
         }
       }}
-      whileHover={{ scale: compareMode ? 1 : 1.02 }}
+      whileHover={{ scale: compareMode ? 1 : 1.015 }}
       transition={{ duration: 0.3 }}
     >
       <div className="p-5 md:p-6">
         <div className="flex items-start justify-between mb-3">
           <div>
             <h3
-              className="text-xl font-bold"
-              style={{ fontFamily: 'var(--font-heading)', color: 'var(--text-primary)' }}
+              className="font-bold"
+              style={{
+                fontFamily: 'var(--font-heading)',
+                color: 'var(--text-primary)',
+                fontSize: 'var(--text-card-title)',
+                letterSpacing: 'var(--heading-letter-spacing)',
+              }}
             >
               {bean.name}
             </h3>
@@ -284,6 +291,8 @@ function ComparisonPanel({
       style={{
         backgroundColor: 'var(--bg-secondary)',
         borderColor: 'var(--accent)',
+        borderRadius: 'var(--card-radius)',
+        boxShadow: 'var(--card-shadow)',
       }}
     >
       <div className="flex items-center justify-between mb-6">
@@ -433,21 +442,27 @@ export function BeanExplorer() {
   return (
     <div>
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10">
         <div>
           <h2
-            className="text-3xl md:text-4xl font-bold mb-2"
-            style={{ fontFamily: 'var(--font-heading)', color: 'var(--text-primary)' }}
+            className="font-bold mb-2"
+            style={{
+              fontFamily: 'var(--font-heading)',
+              color: 'var(--text-primary)',
+              fontSize: 'var(--text-section)',
+              letterSpacing: 'var(--heading-letter-spacing)',
+              textShadow: 'var(--heading-glow)',
+            }}
           >
             Bean Explorer
           </h2>
-          <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
+          <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--text-small)' }}>
             Discover the world's four commercial coffee species
           </p>
         </div>
         <button
           onClick={() => (compareMode ? exitCompareMode() : setCompareMode(true))}
-          className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all self-start ${
+          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium self-start cursor-pointer ${
             compareMode ? 'ring-2 ring-[var(--accent)]' : ''
           }`}
           style={{

@@ -22,12 +22,18 @@ export function DrinksGuide() {
   return (
     <SectionWrapper id="drinks-guide">
       <h2
-        className="text-3xl md:text-4xl font-bold mb-2"
-        style={{ fontFamily: 'var(--font-heading)', color: 'var(--text-primary)' }}
+        className="font-bold mb-2"
+        style={{
+          fontFamily: 'var(--font-heading)',
+          color: 'var(--text-primary)',
+          fontSize: 'var(--text-section)',
+          letterSpacing: 'var(--heading-letter-spacing)',
+          textShadow: 'var(--heading-glow)',
+        }}
       >
         Drinks Guide
       </h2>
-      <p className="mb-8 max-w-2xl" style={{ color: 'var(--text-secondary)' }}>
+      <p className="mb-10 max-w-2xl" style={{ color: 'var(--text-secondary)', fontSize: 'var(--text-small)' }}>
         Visual guide to 20 classic and specialty coffee drinks — tap any card to see its layered
         composition.
       </p>
@@ -43,11 +49,13 @@ export function DrinksGuide() {
               setActiveTab(tab);
               setExpandedDrink(null);
             }}
-            className="px-4 py-2 rounded-full text-sm font-medium transition-all cursor-pointer"
+            className="px-4 py-2 rounded-full text-sm font-medium cursor-pointer"
             style={{
               backgroundColor: activeTab === tab ? 'var(--accent)' : 'var(--bg-secondary)',
               color: activeTab === tab ? '#FEFCF9' : 'var(--text-secondary)',
               border: `1px solid ${activeTab === tab ? 'var(--accent)' : 'var(--border)'}`,
+              minHeight: '40px',
+              transition: 'all var(--transition-fast)',
             }}
           >
             {tab}
@@ -57,7 +65,7 @@ export function DrinksGuide() {
 
       {/* Drinks grid */}
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
         layout
         role="tabpanel"
         aria-label={`${activeTab} drinks`}
@@ -96,10 +104,13 @@ function DrinkCard({ drink, isExpanded, onToggle }: DrinkCardProps) {
 
   return (
     <div
-      className="rounded-xl overflow-hidden"
+      className="overflow-hidden"
       style={{
         backgroundColor: 'var(--bg-secondary)',
+        borderRadius: 'var(--card-radius)',
         border: `1px solid ${isExpanded ? 'var(--accent)' : 'var(--border)'}`,
+        boxShadow: 'var(--card-shadow)',
+        transition: 'border-color var(--transition-base), box-shadow var(--transition-base)',
       }}
     >
       {/* Card header — always visible */}
@@ -118,7 +129,11 @@ function DrinkCard({ drink, isExpanded, onToggle }: DrinkCardProps) {
         <div className="flex-1 min-w-0">
           <h3
             className="font-bold text-base truncate"
-            style={{ fontFamily: 'var(--font-heading)', color: 'var(--text-primary)' }}
+            style={{
+              fontFamily: 'var(--font-heading)',
+              color: 'var(--text-primary)',
+              letterSpacing: 'var(--heading-letter-spacing)',
+            }}
           >
             {drink.name}
           </h3>

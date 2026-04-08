@@ -18,6 +18,37 @@
 - **Radar chart scores** — Beans scored 1-10 on 5 dimensions (acidity, body, sweetness, bitterness, aftertaste)
 - **Color constants in drinks.ts** — All UI colors should import from or replicate the hex constants defined there
 
+### Design System Tokens (Lydia)
+
+**Date:** 2025-07-16  
+**Status:** Implemented
+
+Established comprehensive CSS custom property system in `theme.css`:
+- Typography: `--text-hero`, `--text-section`, `--text-card-title`, `--text-body`, `--text-small` using responsive `clamp()` values
+- Cards: `--card-radius: 1rem`, unified shadows and padding tokens
+- Interaction: `--focus-ring` for global focus-visible styling, transition speed tokens
+- Spacing: `--section-padding-y` with responsive clamp values
+- Dark mode: `--heading-glow` adds warm amber glow to headings
+- `--bg-tertiary` enables alternating section background patterns
+
+**Rationale:** Single source of truth prevents visual inconsistency from hardcoded values.
+
+### TasteRadar Shared Component (Walter)
+
+**Date:** 2026-04-08  
+**Status:** Implemented
+
+5-axis taste radar chart extracted to `src/components/TasteRadar.tsx` for reuse across FlavorWheel (demo) and BeanExplorer (per-bean profiles).
+
+```ts
+export function TasteRadar({ scores, size }: {
+  scores: { acidity: number; body: number; sweetness: number; bitterness: number; aftertaste: number };
+  size?: number;
+})
+```
+
+Max score hardcoded at 10 (matching bean data range); add `maxScore` prop if alternate scales needed.
+
 ## Governance
 
 - All meaningful changes require team consensus

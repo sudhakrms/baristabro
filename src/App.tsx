@@ -1,4 +1,5 @@
 import { Navbar } from './components/Navbar';
+import { Footer } from './components/Footer';
 import { Hero } from './sections/Hero';
 import { SectionWrapper } from './components/SectionWrapper';
 import { FlavorWheel } from './sections/FlavorWheel';
@@ -17,7 +18,7 @@ function App() {
         <BeanExplorer />
       </SectionWrapper>
 
-      <SectionWrapper id="terminology">
+      <SectionWrapper id="terminology" alternate>
         <Terminology />
       </SectionWrapper>
 
@@ -25,9 +26,11 @@ function App() {
 
       <DrinksGuide />
 
-      <SectionWrapper id="brewing-methods">
+      <SectionWrapper id="brewing-methods" alternate>
         <BrewingMethods />
       </SectionWrapper>
+
+      <Footer />
     </div>
   );
 }

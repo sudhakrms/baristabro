@@ -37,11 +37,13 @@ function FlipCard({ term, index }: { term: Term; index: number }) {
       >
         {/* Front */}
         <div
-          className="absolute inset-0 rounded-xl border p-5 flex flex-col justify-between"
+          className="absolute inset-0 p-5 flex flex-col justify-between"
           style={{
             backfaceVisibility: 'hidden',
             backgroundColor: 'var(--bg-secondary)',
-            borderColor: 'var(--border)',
+            borderRadius: 'var(--card-radius)',
+            border: 'var(--card-border)',
+            boxShadow: 'var(--card-shadow)',
           }}
         >
           <span
@@ -66,12 +68,14 @@ function FlipCard({ term, index }: { term: Term; index: number }) {
 
         {/* Back */}
         <div
-          className="absolute inset-0 rounded-xl border p-5 overflow-y-auto"
+          className="absolute inset-0 p-5 overflow-y-auto"
           style={{
             backfaceVisibility: 'hidden',
             transform: 'rotateY(180deg)',
             backgroundColor: 'var(--bg-secondary)',
-            borderColor: 'var(--accent)',
+            borderRadius: 'var(--card-radius)',
+            border: '1px solid var(--accent)',
+            boxShadow: 'var(--card-shadow)',
           }}
         >
           <h4
@@ -111,12 +115,18 @@ export function Terminology() {
     <div>
       {/* Header */}
       <h2
-        className="text-3xl md:text-4xl font-bold mb-2"
-        style={{ fontFamily: 'var(--font-heading)', color: 'var(--text-primary)' }}
+        className="font-bold mb-2"
+        style={{
+          fontFamily: 'var(--font-heading)',
+          color: 'var(--text-primary)',
+          fontSize: 'var(--text-section)',
+          letterSpacing: 'var(--heading-letter-spacing)',
+          textShadow: 'var(--heading-glow)',
+        }}
       >
         Coffee Terminology
       </h2>
-      <p className="text-sm mb-6" style={{ color: 'var(--text-secondary)' }}>
+      <p className="mb-8" style={{ color: 'var(--text-secondary)', fontSize: 'var(--text-small)' }}>
         Your glossary of essential coffee terms
       </p>
 
@@ -133,7 +143,7 @@ export function Terminology() {
           aria-label="Search coffee terms"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full pl-10 pr-4 py-2.5 rounded-xl border text-sm outline-none focus:ring-2 focus:ring-[var(--accent)]"
+          className="w-full pl-10 pr-4 py-3 rounded-xl border text-sm outline-none focus:ring-2 focus:ring-[var(--accent)]"
           style={{
             backgroundColor: 'var(--bg-secondary)',
             borderColor: 'var(--border)',
@@ -149,11 +159,13 @@ export function Terminology() {
             key={cat}
             onClick={() => setActiveCategory(cat)}
             aria-pressed={activeCategory === cat}
-            className="px-3 py-1.5 rounded-full text-xs font-medium transition-all"
+            className="px-4 py-2 rounded-full text-xs font-medium cursor-pointer"
             style={{
               backgroundColor: activeCategory === cat ? 'var(--accent)' : 'var(--bg-secondary)',
               color: activeCategory === cat ? 'var(--bg-primary)' : 'var(--text-secondary)',
               border: `1px solid ${activeCategory === cat ? 'var(--accent)' : 'var(--border)'}`,
+              minHeight: '36px',
+              transition: 'all var(--transition-fast)',
             }}
           >
             {cat}
@@ -167,7 +179,7 @@ export function Terminology() {
       </p>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         <AnimatePresence mode="popLayout">
           {filtered.map((term, i) => (
             <FlipCard key={term.term} term={term} index={i} />
