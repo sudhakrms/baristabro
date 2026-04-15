@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Say No</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #fce4ec 0%, #e8eaf6 50%, #e0f7fa 100%);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      padding: 2rem;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 480px;
+      width: 100%;
+    }
+
+    .emoji {
+      font-size: 5rem;
+      margin-bottom: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    /* Default: happy, bouncy wave */
+    .emoji.happy {
+      animation: bounce 1.5s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      30% { transform: translateY(-12px) rotate(6deg); }
+      60% { transform: translateY(-4px) rotate(-4deg); }
+    }
+
+    /* Thinking: slow rock + shrink */
+    .emoji.thinking {
+      animation: think 1.2s ease-in-out infinite;
+    }
+
+    @keyframes think {
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      25% { transform: rotate(10deg) scale(0.95); }
+      50% { transform: rotate(-5deg) scale(1.02); }
+      75% { transform: rotate(8deg) scale(0.97); }
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      color: #546e7a;
+      font-weight: 400;
+      margin-bottom: 2rem;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-no {
+      background: linear-gradient(135deg, #ff1744, #d500f9, #651fff);
+      color: #fff;
+      border: none;
+      width: 140px;
+      height: 140px;
+      font-size: 1.4rem;
+      font-weight: 700;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 8px 32px rgba(213, 0, 249, 0.45), 0 0 60px rgba(255, 23, 68, 0.2);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+      letter-spacing: 0.04em;
+    }
+
+    .btn-no:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 40px rgba(213, 0, 249, 0.55), 0 0 80px rgba(255, 23, 68, 0.3);
+    }
+
+    .btn-no:active {
+      transform: scale(0.95);
+      box-shadow: 0 4px 16px rgba(213, 0, 249, 0.35);
+    }
+
+    .btn-no:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .response-area {
+      margin-top: 1.8rem;
+      padding: 1.2rem 1rem 0;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      display: none;
+    }
+
+    .response-area.visible {
+      display: block;
+    }
+
+    .response-area.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .response-area .reason {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      font-style: italic;
+      background: linear-gradient(180deg, #e91e63 0%, #b0677a 40%, #78909c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 500;
+    }
+
+    .response-area.error .reason {
+      background: linear-gradient(180deg, #e57373, #b0677a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-style: normal;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="emoji happy" id="emoji">🤗</div>
+    <h1>Need an excuse? We got you.</h1>
+
+    <button class="btn-no" id="sayNoBtn">Say No</button>
+
+    <div class="response-area" id="responseCard">
+      <div class="reason" id="reasonText"></div>
+    </div>
+  </div>
+
+  <script>
+    const btn = document.getElementById('sayNoBtn');
+    const card = document.getElementById('responseCard');
+    const reasonText = document.getElementById('reasonText');
+    const emoji = document.getElementById('emoji');
+
+    btn.addEventListener('click', async () => {
+      btn.disabled = true;
+      btn.textContent = '...';
+      card.classList.remove('show', 'error');
+
+      // Switch to thinking state
+      emoji.className = 'emoji thinking';
+      emoji.textContent = '🤔';
+
+      try {
+        const res = await fetch('https://naas.isalman.dev/no');
+        if (!res.ok) throw new Error('Request failed');
+        const data = await res.json();
+
+        reasonText.textContent = data.reason;
+        card.classList.remove('error');
+      } catch {
+        reasonText.textContent = "Couldn\u2019t fetch a reason \u2014 try again!";
+        card.classList.add('error');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Say No';
+
+        // Back to happy state
+        emoji.className = 'emoji happy';
+        emoji.textContent = '🤗';
+
+        // show card with animation
+        card.classList.add('visible');
+        card.style.display = 'block';
+        // force reflow so transition re-triggers
+        void card.offsetWidth;
+        card.classList.add('show');
+      }
+    });
+  </script>
+</body>
+</html>
