@@ -48,7 +48,7 @@ export function Navbar() {
             letterSpacing: 'var(--heading-letter-spacing)',
           }}
         >
-          BrewSchool
+          BaristaBro
         </a>
 
         {/* Desktop links */}

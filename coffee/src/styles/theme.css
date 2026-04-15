@@ -1,15 +1,15 @@
-/* BrewSchool Theme — Design System Tokens */
+/* BaristaBro Theme — Design System Tokens */
 
 :root {
   /* ——— Color Palette ——— */
-  --bg-primary: #FEFCF9;
-  --bg-secondary: #F5E6D3;
-  --bg-tertiary: #EDE0D4;
-  --accent: #8B4513;
-  --accent-hover: #6F360F;
+  --bg-primary: #FFFBF5;
+  --bg-secondary: #F4E4D0;
+  --bg-tertiary: #E8D5BD;
+  --accent: #A85F2A;
+  --accent-hover: #8B4513;
   --text-primary: #2B1810;
   --text-secondary: #5D4633;
-  --border: #D9CDD3;
+  --border: #D4C4B0;
 
   /* ——— Typography ——— */
   --font-heading: 'Playfair Display', Georgia, serif;
@@ -52,7 +52,7 @@
   --bg-secondary: #2B1F18;
   --bg-tertiary: #231A14;
   --accent: #D4A574;
-  --accent-hover: #E0B98A;
+  --accent-hover: #E8C79E;
   --text-primary: #F5E6D3;
   --text-secondary: #C9B5A1;
   --border: #4A3F38;

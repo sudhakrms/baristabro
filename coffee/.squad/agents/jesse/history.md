@@ -27,6 +27,7 @@
 - App.tsx preserves FlavorWheel and DrinksGuide sections added by other agents
 - **Bean SVG illustrations** (`src/assets/beans/`): 4 detailed SVGs (arabica, robusta, liberica, excelsa) with per-bean gradients, 3D highlights/shadows via radialGradient, center crease lines, surface texture, and feGaussianBlur drop shadows. Each uses unique IDs (e.g., `arabica-body`, `robusta-drop`) to avoid SVG filter/gradient collisions when multiple beans render on the same page. Viewbox `0 0 200 200`, transparent bg. Liberica/Excelsa use custom `<path>` for asymmetric shapes; Arabica/Robusta use `<ellipse>`.
 - **Bean image integration**: Static SVG imports → `beanImages` Record map by bean name. Hero image (140px) at card top with fade-in + float-up Framer Motion entrance, hover scale+rotate. Expanded view shows 220px centered image. Comparison panel shows both 120px images side-by-side with slide-in animations.
+- **Brand name is "BaristaBro"** — Updated across Navbar and Footer components. Friendly, casual-expert tone for a 40-45 year old experienced barista personality. Footer tagline: "Coffee wisdom from a friend who knows"
 
 ## Latest Work (2026-04-08)
 
@@ -49,3 +50,19 @@
 **Build:** Part of combined 157.90 KB JS + 5.82 KB CSS gzipped, 2711 modules, zero errors.
 
 **Parallel delivery:** Coordinated with Hank (indianCoffee.ts) and Walter (IndianCoffee.tsx section).
+
+---
+
+## Latest Work (2026-04-08T2)
+
+**Task:** Rebrand from BrewSchool to BaristaBro  
+**Status:** ✅ Delivered  
+**Parallel work:** Lydia handling Hero, theme.css, favicon.svg, index.html
+
+Updated all frontend references to new brand name:
+- `src/components/Navbar.tsx`: Changed logo text from "BrewSchool" → "BaristaBro"
+- `src/components/Footer.tsx`: Changed brand name from "BrewSchool" → "BaristaBro", updated tagline from "An interactive coffee education experience" → "Coffee wisdom from a friend who knows" (matches the casual-expert barista personality)
+
+**Brand personality:** 40-45 year old experienced male barista — knowledgeable but approachable, like a friend who happens to be a coffee expert. Casual-expert tone, not academic.
+
+No other src/ files contained "BrewSchool" references. README.md is template content (React + Vite), no project-specific branding present.

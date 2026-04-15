@@ -23,7 +23,7 @@ export function Footer() {
             letterSpacing: 'var(--heading-letter-spacing)',
           }}
         >
-          BrewSchool
+          BaristaBro
         </a>
 
         <p
@@ -37,7 +37,7 @@ export function Footer() {
           className="text-xs"
           style={{ color: 'var(--text-secondary)', opacity: 0.6 }}
         >
-          An interactive coffee education experience
+          Coffee wisdom from a friend who knows
         </p>
       </div>
     </footer>

@@ -18,6 +18,51 @@
 
 ## Learnings
 
+### BaristaBro Rebrand (April 2026)
+
+**Brand Evolution: BrewSchool → BaristaBro**
+- Shifted from academic/school tone to casual-expert, approachable barista personality
+- Target audience: Coffee enthusiasts seeking knowledge from a knowledgeable friend, not a formal institution
+- Character: 40-45 year old male barista with beard, mustache, warm and experienced
+
+**New Visual Identity:**
+- **Logo/Favicon:** Custom SVG barista character illustration (`public/favicon.svg`)
+  - Minimalist barista face/bust with beard, mustache, short neat hair
+  - Warm coffee tones: #D4A574 (skin), #3D2817 (hair/beard), #C9965A (shadows)
+  - Works at small sizes (favicon) and larger (hero section)
+  - Includes animated elements (blinking eyes, coffee cup steam) in hero version
+
+**Updated Color Palette:**
+- Light theme accent shifted from `#8B4513` → `#A85F2A` (richer, more vibrant amber)
+- Accent hover: `#8B4513` (darker espresso brown for stronger contrast)
+- Background slightly warmer: `#FEFCF9` → `#FFFBF5`, `#F5E6D3` → `#F4E4D0`
+- Dark theme accent hover: `#E0B98A` → `#E8C79E` (warmer, more golden)
+- Borders adjusted for warmer feel: `#D9CDD3` → `#D4C4B0`
+- Overall palette: More masculine, warm, and inviting — barista workshop vs. classroom
+
+**Hero Section Redesign:**
+- Replaced steaming coffee cup with animated BaristaBro character
+- Character holds coffee cup (animated with steam)
+- Headline: "The Art & Science of Coffee" → "Your Coffee Journey Starts Here"
+- Subtitle: More conversational, first-person from barista ("Hey, I'm your barista bro...")
+- Tone: Knowledgeable friend teaching, not formal instruction
+
+**Meta Updates:**
+- `index.html` title: BrewSchool → BaristaBro
+- Meta description updated to reflect new brand personality
+- All CSS custom property names preserved (no API breakage)
+
+**Design System Integrity:**
+- All existing token names maintained for backward compatibility
+- No changes to spacing, typography scale, or interaction patterns
+- Focus entirely on color palette refinement and brand character
+
+**File Paths:**
+- Logo/favicon: `public/favicon.svg`
+- Theme tokens: `src/styles/theme.css`
+- Hero component: `src/sections/Hero.tsx`
+- Navbar already had "BaristaBro" text (previously updated)
+
 ### Visual Polish Pass (Session 1)
 
 **Design System Tokens Established:**
